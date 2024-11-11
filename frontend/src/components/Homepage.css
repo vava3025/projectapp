@@ -1,0 +1,87 @@
+.home-page {
+    text-align: center;
+    margin-top: 60px;
+}
+.heading{
+       padding-top: 10px;
+}
+.banner {
+    background-color: #f2f2f2;
+    padding: 50px 20px;
+    margin-bottom: 20px;
+}
+
+.banner-title {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.banner-subtitle {
+    margin: 10px 0;
+    color: #555;
+}
+
+.shop-now-btn {
+    margin-top: 20px;
+}
+
+.carousel {
+    margin-bottom: 50px;
+}
+
+.carousel-item {
+    position: relative;
+    width: 100%;             /* Full width of the screen or parent container */
+    height: 600px;           /* Fixed height for the carousel */
+    overflow: hidden;  
+}
+
+.carousel-image {
+    width: 100%;
+    height: 700px;
+    object-position: center; /* Centers the image within the container */
+    
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.categories {
+    margin-top: 20px;
+}
+
+.categories-title {
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.category-items {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.category {
+    text-align: center;
+    width: 200px;
+}
+
+.category img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.category button {
+    margin-top: 10px;
+}
