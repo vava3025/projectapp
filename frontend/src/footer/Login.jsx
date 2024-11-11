@@ -1,34 +1,35 @@
-import { Button, TextField, Typography, Box, Link, Checkbox, FormControlLabel } from '@mui/material';
+import { Button, TextField, Typography, Box, Link } from '@mui/material';
 import React, { useState } from 'react';
-import axios from 'axios'
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { Email } from '@mui/icons-material';
 
 const Login = () => {
   const [user, setUser] = useState({
-    emails: '',
+    email: '',
     password: ''
   });
-  const navigate=useNavigate()
-  let updateUser = (e) => {
+  const navigate = useNavigate();
+
+  const updateUser = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
-  let sendData = () => {
-    axios.post('http://localhost:3000/login/view', user)
+
+  const sendData = () => {
+    axios.post('http://localhost:3000/user/login', user)
       .then((res) => {
         console.log(res.data.message);
-        if (res.data.message === "Login successful") {
-          navigate('/'); // or wherever you want to redirect
+        if (res.data.message === 'Login successful') {
+          navigate('/'); // Redirect to the home page or dashboard
         } else {
-          alert("Invalid credentials");
+          alert('Invalid credentials');
         }
       })
       .catch((err) => {
-        console.error("Login error", err);
-        alert("An error occurred");
+        console.error('Login error', err);
+        alert('Invalid Credentials');
       });
   };
-  
+
   return (
     <Box
       display="flex"
@@ -55,9 +56,8 @@ const Login = () => {
           id="email"
           label="Email Address"
           variant="outlined"
-          name="emails"
-
-          value={user.emails}
+          name="email"
+          value={user.email}
           onChange={updateUser}
           fullWidth
           margin="normal"
@@ -74,7 +74,6 @@ const Login = () => {
           margin="normal"
         />
         <Button
-          // href='/'
           variant="contained"
           onClick={sendData}
           fullWidth
@@ -82,9 +81,9 @@ const Login = () => {
             marginTop: '1rem',
             backgroundColor: '#333',
             '&:hover': {
-              backgroundColor: '#555'
+              backgroundColor: '#555',
             },
-            color: '#fff'
+            color: '#fff',
           }}
         >
           Continue
@@ -96,7 +95,6 @@ const Login = () => {
               Click here
             </Link>
           </Typography>
-          
         </Box>
       </Box>
     </Box>
@@ -104,4 +102,3 @@ const Login = () => {
 };
 
 export default Login;
-

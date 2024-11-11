@@ -5,7 +5,26 @@ router.use(express.json());
 const userModel=require('../model/userModel');
 require('../db/connection')
 
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    // Check if user exists
+    const user = await userModel.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ message: 'User not found' });
+    }
 
+    // Verify password (for demonstration; use hashed passwords in production)
+    if (user.password !== password) {
+      return res.status(401).json({ message: 'Invalid password' });
+    }
+
+    res.status(200).json({ message: 'Login successful', user });
+  } catch (error) {
+    console.error('Login error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 router.post(
     '/register',
     
